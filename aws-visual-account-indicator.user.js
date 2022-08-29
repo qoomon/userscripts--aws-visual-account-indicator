@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         AWS Account Name & Color
-// @namespace    https://gist.github.com/qoomon/e4540a1438123ac276fd785ac603ac6f
-// @version      0.4
-// @updateURL    https://gist.githubusercontent.com/qoomon/e4540a1438123ac276fd785ac603ac6f/raw/tampermonkey.js
-// @downloadURL  https://gist.githubusercontent.com/qoomon/e4540a1438123ac276fd785ac603ac6f/raw/tampermonkey.js
-// @description  try to take over the world!
-// @author       You
+// @name         AWS Visual Account Indicator
+// @namespace    https://qoomon.github.io
+// @version      1.0.0
+// @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
+// @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
+// @description  Read and add account name and color indicator from cookie values
+// @author       qoomon
 // @match        https://*.console.aws.amazon.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @icon         https://a0.awsstatic.com/libra-css/images/logos/aws_smile-header-desktop-en-white_59x35.png
 // @grant        none
 // ==/UserScript==
 
