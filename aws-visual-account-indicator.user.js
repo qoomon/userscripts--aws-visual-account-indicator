@@ -4,7 +4,7 @@
 // @version      1.0.2
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
-// @description  This userscript reads login cookie and adds account name and color indicator
+// @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
 // @author       qoomon
 // @match        https://*.console.aws.amazon.com/*
 // @icon         https://a0.awsstatic.com/libra-css/images/logos/aws_smile-header-desktop-en-white_59x35.png
