@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.1
+// @version      1.0.2
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads login cookie and adds account name and color indicator
@@ -68,11 +68,11 @@
     accountNameElement.innerText = getAccountDisplayName(userInfo)
     accountNameElement.style.cssText = `
         color: white !important;
-        background-color: ${indicatorColor};
         white-space: nowrap;
+        background-color: ${indicatorColor};
+        border-radius: 48px;
         padding: 0px 8px;
         margin-right: 8px;
-        border-radius: 48px;
     `
 
     const usernameMenuElement = document.querySelector('#nav-usernameMenu')
@@ -82,8 +82,8 @@
     const indicatorBarElement = document.createElement('div')
 
     indicatorBarElement.style.cssText = `
-      background: repeating-linear-gradient(-45deg, ${indicatorColor}, ${indicatorColor} 12px, transparent 0px, transparent 24px);
       height: 8px;
+      background: repeating-linear-gradient(-45deg, ${indicatorColor}, ${indicatorColor} 12px, transparent 0px, transparent 24px);
       margin-top: 4px;
     `
 
