@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.0
+// @version      1.0.1
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads login cookie and adds account name and color indicator
@@ -22,9 +22,9 @@
 
     function getAccountDisplayColor(userInfo) {
         const displayName = getAccountDisplayName(userInfo)
-        if(displayName.includes('prod-')) return '#bf1212'
-        if(displayName.includes('stage-')) return '#b78403'
-        if(displayName.includes('lab-')) return '#007c9a'
+        if(displayName.match(/(^|[^a-zA-Z])(production|prod)([^a-zA-Z]|$)/)) return '#bf1212'
+        if(displayName.match(/(^|[^a-zA-Z])(staging|stage|)([^a-zA-Z]|$)/)) return '#b78403'
+        if(displayName.match(/(^|[^a-zA-Z])(lab|sandbox)([^a-zA-Z]|$)/)) return '#007c9a'
         return '#b8b8b891'
     }
 
