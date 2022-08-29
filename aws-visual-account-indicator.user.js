@@ -4,7 +4,7 @@
 // @version      1.0.0
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
-// @description  Read and add account name and color indicator from cookie values
+// @description  This script reads login cookie and adds account name and color indicator
 // @author       qoomon
 // @match        https://*.console.aws.amazon.com/*
 // @icon         https://a0.awsstatic.com/libra-css/images/logos/aws_smile-header-desktop-en-white_59x35.png
