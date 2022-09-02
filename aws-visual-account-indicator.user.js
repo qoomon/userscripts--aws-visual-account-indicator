@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.6
+// @version      1.0.7
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
@@ -65,7 +65,11 @@
     // --- Add account label ---------------------------------------------------
 
     const accountNameElement = document.createElement('a')
-    accountNameElement.href = userInfo.issuer.split('#')[0]
+    if(userInfo.issuer === 'http://signin.aws.amazon.com/signin'){
+        accountNameElement.href = 'https://console.aws.amazon.com/console/home'
+    } else {
+        accountNameElement.href = userInfo.issuer.split('#')[0]
+    }
     accountNameElement.innerText = getAccountDisplayName(userInfo)
     accountNameElement.style.cssText = `
         height: 20px;
