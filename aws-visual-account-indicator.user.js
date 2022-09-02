@@ -22,9 +22,9 @@
 
     function getAccountDisplayColor(userInfo) {
         const displayName = getAccountDisplayName(userInfo)
-        if(displayName.match(/(^|[^a-zA-Z])(production|prod)([^a-zA-Z]|$)/)) return '#bf1212'
-        if(displayName.match(/(^|[^a-zA-Z])(staging|stage|)([^a-zA-Z]|$)/)) return '#b78403'
-        if(displayName.match(/(^|[^a-zA-Z])(lab|sandbox)([^a-zA-Z]|$)/)) return '#007c9a'
+        if(displayName.match(/(^|[^a-zA-Z])(production|prod)([^a-zA-Z]|$)/)) return '#bf1212d9'
+        if(displayName.match(/(^|[^a-zA-Z])(staging|stage|)([^a-zA-Z]|$)/)) return '#b78403d9'
+        if(displayName.match(/(^|[^a-zA-Z])(lab|sandbox)([^a-zA-Z]|$)/)) return '#007c9ad9'
         return '#b8b8b891'
     }
 
