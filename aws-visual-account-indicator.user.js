@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.9
+// @version      1.0.10
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
@@ -14,7 +14,7 @@
 // --- Configure display name and color ------------------------------------
 
 function getDisplayName(userInfo) {
-    return userInfo.accountName || userInfo.accountAlias || userInfo.accountId
+    return userInfo.accountAlias || userInfo.accountName || userInfo.accountId
 }
 
 function getDisplayColor(userInfo) {
