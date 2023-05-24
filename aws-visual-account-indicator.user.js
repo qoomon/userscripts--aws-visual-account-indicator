@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.13
+// @version      1.0.14
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
@@ -15,15 +15,20 @@
 // --- Configure display name and color ------------------------------------
 
 function getDisplayName(userInfo) {
-    return userInfo.accountAlias || userInfo.accountName || userInfo.accountId
+    return userInfo.accountAlias
+    || userInfo.accountName
+    || userInfo.accountId
 }
 
 function getDisplayColor(userInfo) {
     const displayName = getDisplayName(userInfo)
-    if(displayName.match(/(^|[^a-zA-Z])(production|prod)([^a-zA-Z]|$)/)) return '#921b1d'
-    if(displayName.match(/(^|[^a-zA-Z])(staging|stage)([^a-zA-Z]|$)/)) return '#a27401'
-    if(displayName.match(/(^|[^a-zA-Z])(sandbox|lab|Jungheinrich JDS Resources Brodersen)([^a-zA-Z]|$)/)) return '#016a83'
-    return '#7c7c7c'
+    if(displayName.match(/(^|[^a-z])(production|prod|live)([^a-z]|$)/i))
+        return '#921b1d' // red
+    if(displayName.match(/(^|[^a-z])(staging|stage|test)([^a-z]|$)/i))
+        return '#a27401' // yellow
+    if(displayName.match(/(^|[^a-z])(sandbox|lab|dev)([^a-z]|$)/i))
+        return '#016a83' // blue
+    return '#7c7c7c' // grey
 }
 
 (async function() {
