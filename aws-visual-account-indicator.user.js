@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.10
+// @version      1.0.11
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
@@ -9,6 +9,7 @@
 // @match        https://*.console.aws.amazon.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=aws.amazon.com
 // @grant        none
+// @run-at document-end
 // ==/UserScript==
 
 // --- Configure display name and color ------------------------------------
@@ -21,15 +22,19 @@ function getDisplayColor(userInfo) {
     const displayName = getDisplayName(userInfo)
     if(displayName.match(/(^|[^a-zA-Z])(production|prod)([^a-zA-Z]|$)/)) return '#921b1d'
     if(displayName.match(/(^|[^a-zA-Z])(staging|stage)([^a-zA-Z]|$)/)) return '#a27401'
-    if(displayName.match(/(^|[^a-zA-Z])(sandbox|lab|)([^a-zA-Z]|$)/)) return '#016a83'
+    if(displayName.match(/(^|[^a-zA-Z])(sandbox|lab|Jungheinrich JDS Resources Brodersen)([^a-zA-Z]|$)/)) return '#016a83'
     return '#7c7c7c'
 }
 
-(function() {
+(async function() {
     'use strict';
+
+    // await until nav bar has be loaded
+    await untilDefined(() => document.querySelector('#awsc-nav-header'))
 
     const userInfo = getUserInfo()
     const indicatorColor = getDisplayColor(userInfo)
+
 
     // --- Add account label ---------------------------------------------------
 
@@ -100,4 +105,16 @@ function getUserInfo() {
         issuer,
         accountName,
     }
+}
+
+async function untilDefined(fn) {
+    return new Promise(resolve => {
+        const interval = setInterval(() => {
+            const result = fn()
+            if (result != undefined) {
+                clearInterval(interval)
+                resolve(result)
+            }
+        }, 100)
+   })
 }
