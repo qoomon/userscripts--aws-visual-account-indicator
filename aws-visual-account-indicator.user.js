@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS Visual Account Indicator
 // @namespace    https://qoomon.github.io
-// @version      1.0.11
+// @version      1.0.12
 // @updateURL    https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @downloadURL  https://github.com/qoomon/userscript-aws-visual-account-indicator/raw/main/aws-visual-account-indicator.user.js
 // @description  This userscript reads the aws-userInfo cookie and adds account name and color indicator
@@ -30,11 +30,12 @@ function getDisplayColor(userInfo) {
     'use strict';
 
     // await until nav bar has be loaded
-    await untilDefined(() => document.querySelector('#awsc-nav-header'))
+    await untilElementDefined('#awsc-nav-header')
+  
+    // -------------------------------------------------------------------------
 
     const userInfo = getUserInfo()
     const indicatorColor = getDisplayColor(userInfo)
-
 
     // --- Add account label ---------------------------------------------------
 
@@ -107,14 +108,20 @@ function getUserInfo() {
     }
 }
 
-async function untilDefined(fn) {
-    return new Promise(resolve => {
-        const interval = setInterval(() => {
-            const result = fn()
-            if (result != undefined) {
-                clearInterval(interval)
-                resolve(result)
-            }
-        }, 100)
-   })
+async function untilElementDefined(selector, scope = document.body) {
+    return new Promise((resolve) => {
+      const element = scope.querySelector(selector);
+      if (element) {
+          return resolve(element);
+      }
+
+      const observer = new MutationObserver(() => {
+          const element = scope.querySelector(selector);
+          if (element) {
+              observer.disconnect();
+              return resolve(targetElement);
+          }
+      });
+      observer.observe(scope, {childList: true, subtree: true});
+    });
 }
