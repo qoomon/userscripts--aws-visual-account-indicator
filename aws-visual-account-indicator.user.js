@@ -22,11 +22,11 @@ function getDisplayName(userInfo) {
 
 function getDisplayColor(userInfo) {
     const displayName = getDisplayName(userInfo)
-    if(displayName.match(/(^|[^a-z])(production|prod|live)([^a-z]|$)/i))
+    if(displayName.match(/(^|[^a-z])(production|prod|live|prd)([^a-z]|$)/i))
         return '#921b1d' // red
-    if(displayName.match(/(^|[^a-z])(staging|stage|test)([^a-z]|$)/i))
+    if(displayName.match(/(^|[^a-z])(staging|stage|test|tst)([^a-z]|$)/i))
         return '#a27401' // yellow
-    if(displayName.match(/(^|[^a-z])(sandbox|lab|dev)([^a-z]|$)/i))
+    if(displayName.match(/(^|[^a-z])(sandbox|sbx|lab|dev)([^a-z]|$)/i))
         return '#016a83' // blue
     return '#7c7c7c' // grey
 }
