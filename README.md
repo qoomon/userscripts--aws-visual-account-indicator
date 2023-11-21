@@ -5,3 +5,4 @@
 ## Install
 * [Install Violentmonkey](https://violentmonkey.github.io/get-it/) or any other userscript manager
 * [Install this userscript](/aws-visual-account-indicator.user.js?raw=1)
+* Adjust indicator colors by adjustion [getDisplayColor](aws-visual-account-indicator.user.js#L23)
