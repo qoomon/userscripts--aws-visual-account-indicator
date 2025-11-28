@@ -14,14 +14,12 @@
 
 // --- Configure display name and color ------------------------------------
 
-function getDisplayName(userInfo) {
-    return userInfo.accountAlias
-    || userInfo.accountName
-    || userInfo.accountId
+function getDisplayName() {
+    return JSON.parse(document.querySelector('meta[name="awsc-session-data"]').content).accountAlias
 }
 
-function getDisplayColor(userInfo) {
-    const displayName = getDisplayName(userInfo)
+function getDisplayColor() {
+    const displayName = getDisplayName()
     if(displayName.match(/(^|[^a-z])(production|prod|live|prd)([^a-z]|$)/i))
         return '#921b1d' // red
     if(displayName.match(/(^|[^a-z])(staging|stage|test|tst)([^a-z]|$)/i))
@@ -39,8 +37,7 @@ function getDisplayColor(userInfo) {
 
     // -------------------------------------------------------------------------
 
-    const userInfo = getUserInfo()
-    const indicatorColor = getDisplayColor(userInfo)
+    const indicatorColor = getDisplayColor()
 
     // --- Add account label ---------------------------------------------------
 
